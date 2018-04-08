@@ -1,0 +1,25 @@
+{
+  "name": "fsw-p5-map",
+  "version": "1.0.0",
+  "description": "fsw-p5-map",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack-dev-server --env.dev --mode development --open",
+    "build": "webpack --mode production --module-bind js=babel-loader"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregdferrell/fsw-p5-neighborhood-map.git"
+  },
+  "author": "Greg Ferrell",
+  "license": "MIT",
+  "homepage": "https://github.com/gregdferrell/fsw-p5-neighborhood-map#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  }
+}
