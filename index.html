@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Murphy's Map">
+		<meta name="author" content="gregdferrell">
+
+		<title>Murphy's Map</title>
+
+		<link rel="stylesheet" href="css/style.css">
+	    <script src="https://use.fontawesome.com/8129681b5a.js"></script>
+	</head>
+
+	<body>
+		<section class="container">
+			<section class="header-left">
+				<h1>Murphy's Map</h1>
+			</section>
+
+			<section class="header-right">
+				Murphy's Map is brought to you by <em>gregdferrell</em>
+				<a href="https://www.github.com/gregdferrell" target="_blank" class="header-icon-link"><span
+						class="fa fa-github fa-lg text-white" aria-hidden="true"></span></a>
+				<a href="https://www.linkedin.com/in/gregdferrell" target="_blank" class="header-icon-link"><span
+						class="fa fa-linkedin fa-lg text-white" aria-hidden="true"></span></a>
+			</section>
+
+			<aside class="sidebar">
+				<div class="filter-by">
+					<span class="filter-by-text">Filter by</span>
+					<select id="place-type">
+						<option value="none"></option>
+						<option value="dining">Dining</option>
+						<option value="bar">Bar</option>
+						<option value="lodging">Lodging</option>
+					</select>
+				</div>
+				<hr>
+				<div class="place-list">
+					<p class="place-item">Bar 1911</p>
+					<p class="place-item">Brickhouse</p>
+					<p class="place-item">Dooly's Kent</p>
+					<p class="place-item place-item-active">Gahan House</p>
+					<p class="place-item">Hotel on Pownal</p>
+					<p class="place-item">Merchant Man</p>
+					<p class="place-item">PEI Brewing Company</p>
+					<p class="place-item">Pizza Delight</p>
+					<p class="place-item">Sim's Corner</p>
+					<p class="place-item">The Barrington</p>
+					<p class="place-item">The Great George</p>
+				</div>
+				<hr>
+			</aside>
+
+			<main class="main">
+				<div id="map">
+				</div>
+			</main>
+		</section>
+
+		<script src="js/app.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,drawing,geometry&key=AIzaSyAZvnlG6osECOWDzQPG98d1Du4JDWziYAg&v=3&callback=initMap"></script>
+	</body>
+</html>

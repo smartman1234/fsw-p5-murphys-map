@@ -1,0 +1,87 @@
+html, body {
+	background-color: #222;
+	color: white;
+	font-family: -apple-system, BlinkMacSystemFont, Roboto, Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+hr {
+	background: #D0D7D9;
+	height: 1px;
+	margin: 20px 0 20px 0;
+	border: none;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 325px auto;
+	grid-template-rows: 50px auto;
+	grid-template-areas:
+		"header-left header-right"
+		"sidebar main";
+	height: 100%;
+}
+
+.filter-by {
+	margin: 2rem 0 2rem;
+}
+
+.filter-by-text {
+	margin-right: 0.5rem;
+}
+
+.header-icon-link {
+	color: white;
+    margin: 0 0.5rem 0;
+}
+
+.header-left {
+	align-self: center;
+	justify-self: center;
+	grid-area: header-left;
+}
+
+.header-right {
+	align-self: center;
+	justify-self: center;
+	grid-area: header-right;
+}
+
+.main {
+	border-top: 1px solid white;
+	grid-area: main;
+}
+
+#map {
+	height: 100%;
+}
+
+.place-item {
+	margin: 0.75rem;
+	padding: 0.75rem;
+}
+
+.place-item-active {
+	background-color: green;
+	border-radius: 3px;
+}
+
+.place-list {
+	margin-top: 2rem;
+}
+
+#place-type {
+	width: 6rem;
+}
+
+.sidebar {
+	border-top: 1px solid white;
+	grid-area: sidebar;
+	text-align: center;
+}
+
+.top {
+
+}
