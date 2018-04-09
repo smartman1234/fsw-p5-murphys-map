@@ -1,11 +1,11 @@
 import ko from 'knockout'
+import * as Map from './map'
 
-/****************************************************************************************
- GOOGLE MAP
- ****************************************************************************************/
+// Set our GoogleMaps API callback function to initMap()
+window.initMap = Map.initMap;
 
-let map;
 
+// Locations data
 let locations = [
 	{title: 'Bar 1911', location: {lat: 46.2458001, lng: -63.1262579}, visible: true, foursquareId: '598605a08e886a2682330658'},
 	{title: 'Brickhouse', location: {lat: 46.2335767, lng: -63.12835}, visible: true, foursquareId: '4db43a0dfa8c350240e00130'},
@@ -18,23 +18,6 @@ let locations = [
 	{title: 'Sim\'s Corner', location: {lat: 46.2333235, lng: -63.1283067}, visible: true, foursquareId: '4ba69d54f964a5200d6339e3'},
 	{title: 'The Great George', location: {lat: 46.2339997, lng: -63.1265592}, visible: true, foursquareId: '4ba6702cf964a520735239e3'}
 ];
-
-function initMap() {
-	// Constructor creates a new map - only center and zoom are required.
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 46.23789, lng: -63.1324108},
-		zoom: 15,
-		mapTypeControlOptions: {
-			mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
-		}
-	});
-}
-
-window.initMap = initMap;
-
-/****************************************************************************************
- KO - MVVM
- ****************************************************************************************/
 
 let Location = function (data) {
 	this.title = ko.observable(data.title);
