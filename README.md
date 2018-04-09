@@ -12,5 +12,8 @@ A google maps app showcasing Murphy Group locations in PEI. Created to learn Kno
 - `npm run build` -> Create `bundle.js` production distribution
 
 ### TODO
-- Add knockout.js MVVM pattern
-- Integrate with foursquare API
+- Implement filter by location type
+- Get html/css to hot reload
+- Display markers on page load
+- Implement selection of list view entry or map marker; include popup and animation of marker
+- Integrate with foursquare API to get additional info for locations

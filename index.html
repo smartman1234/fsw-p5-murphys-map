@@ -28,26 +28,18 @@
 
 			<aside class="sidebar">
 				<div class="filter-by">
-					<span class="filter-by-text">Filter by</span>
+					<h4>Filters</h4>
+					<span class="filter-by-text">Location Type:</span>
 					<select id="place-type">
-						<option value="none"></option>
-						<option value="dining">Dining</option>
+						<option value=""></option>
+						<option value="restaurant">Restaurant</option>
 						<option value="bar">Bar</option>
-						<option value="lodging">Lodging</option>
+						<option value="hotel">Hotel</option>
 					</select>
 				</div>
 				<hr>
-				<div class="place-list">
-					<p class="place-item">Bar 1911</p>
-					<p class="place-item">Brickhouse</p>
-					<p class="place-item">Dooly's Kent</p>
-					<p class="place-item place-item-active">Gahan House</p>
-					<p class="place-item">Hotel on Pownal</p>
-					<p class="place-item">Merchantman</p>
-					<p class="place-item">PEI Brewing Company</p>
-					<p class="place-item">Pizza Delight</p>
-					<p class="place-item">Sim's Corner</p>
-					<p class="place-item">The Great George</p>
+				<div class="place-list" data-bind="foreach: locationList">
+					<p class="place-item" data-bind="visible: visible, text: title, css: {'place-item-active': selected}, click: $parent.setCurrentLocation"></p>
 				</div>
 				<hr>
 			</aside>
