@@ -1,3 +1,9 @@
+import ko from 'knockout'
+
+/****************************************************************************************
+ GOOGLE MAP
+ ****************************************************************************************/
+
 let map;
 
 let locations = [
@@ -25,3 +31,32 @@ function initMap() {
 }
 
 window.initMap = initMap;
+
+/****************************************************************************************
+ KO - MVVM
+ ****************************************************************************************/
+
+let Location = function (data) {
+	this.title = ko.observable(data.title);
+	this.location = ko.observable(data.location);
+	this.visible = ko.observable(data.visible);
+	this.foursquareId = ko.observable(data.foursquareId);
+};
+
+let ViewModel = function () {
+	let self = this;
+
+	this.locationList = ko.observableArray([]);
+
+	locations.forEach(function (location) {
+		self.locationList.push(new Location(location));
+	});
+
+	this.currentLocation = ko.observable(null);
+
+	this.setCurrentLocation = function (locationSelected) {
+		self.currentLocation(locationSelected);
+	}
+};
+
+ko.applyBindings(new ViewModel());
