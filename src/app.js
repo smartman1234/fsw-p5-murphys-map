@@ -1,5 +1,6 @@
-import * as Map from './map'
-import * as Locations from './locations'
+import * as Map from './map';
+import * as Locations from './locations';
+import './style.css';
 
 // Setup Knockout bindings
 Locations.applyBindings();
