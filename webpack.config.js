@@ -5,6 +5,7 @@ module.exports = options => ({
 	context: path.resolve(__dirname, 'src'),
 	entry: [
 		'./app.js',
+		'./locations.js',
 		'./map.js'
 	],
 	output: {

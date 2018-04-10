@@ -28,14 +28,8 @@
 
 			<aside class="sidebar">
 				<div class="filter-by">
-					<h4>Filters</h4>
-					<span class="filter-by-text">Location Type:</span>
-					<select id="place-type">
-						<option value=""></option>
-						<option value="restaurant">Restaurant</option>
-						<option value="bar">Bar</option>
-						<option value="hotel">Hotel</option>
-					</select>
+					<h4>Filter</h4>
+					<select id="place-type" multiple="multiple" data-bind="options: allLocationTypes, optionsText: 'description', selectedOptions: selectedLocationTypes, attr: {'size': allLocationTypes().length}"></select>
 				</div>
 				<hr>
 				<div class="place-list" data-bind="foreach: locationList">
