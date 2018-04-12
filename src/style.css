@@ -1,3 +1,15 @@
+/* Main CSS for Map */
+
+/*               */
+/* Global Styles */
+/*               */
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 html, body {
 	background-color: #222;
 	color: white;
@@ -14,18 +26,12 @@ hr {
 	border: none;
 }
 
-.container {
-	display: grid;
-	grid-template-columns: 325px auto;
-	grid-template-rows: 50px auto;
-	grid-template-areas:
-		"header-left header-right"
-		"sidebar main";
-	height: 100%;
-}
-
 .filter-by {
-	margin: 2rem 0 2rem;
+	border-top: 1px solid white;
+	grid-area: filters;
+	margin: 0;
+	padding: 1rem 0 1rem;
+	text-align: center;
 }
 
 .header-icon-link {
@@ -81,7 +87,9 @@ hr {
 }
 
 .place-list {
-	margin-top: 2rem;
+	border-top: 1px solid white;
+	grid-area: places;
+	text-align: center;
 }
 
 #place-type {
@@ -95,8 +103,58 @@ hr {
 	text-align: center;
 }
 
-.sidebar {
-	border-top: 1px solid white;
-	grid-area: sidebar;
-	text-align: center;
+/*                 */
+/* Screen < 576px  */
+/*                 */
+
+@media screen and (max-width:575px) {
+	.container {
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: 50px 50px 250px auto;
+		grid-template-areas:
+				"header-left"
+				"header-right"
+				"filters"
+				"main";
+		height: 100%;
+	}
+
+	.place-list {
+		display: none;
+	}
+}
+
+/*                 */
+/* Screen >= 576px */
+/*                 */
+
+@media screen and (min-width:576px) {
+	.container {
+		display: grid;
+		grid-template-columns: 225px auto;
+		grid-template-rows: 50px 250px auto;
+		grid-template-areas:
+				"header-left header-right"
+				"filters main"
+				"places main";
+		height: 100%;
+	}
+}
+
+/*                 */
+/* Screen >= 1200px*/
+/*                 */
+
+@media screen and (min-width:1200px) {
+	.container {
+		display: grid;
+		grid-template-columns: 300px auto;
+		grid-template-rows: 50px 250px auto;
+		grid-template-areas:
+				"header-left header-right"
+				"filters main"
+				"places main";
+		height: 100%;
+	}
 }

@@ -19,24 +19,21 @@
 			</section>
 
 			<section class="header-right">
-				Murphy's Map is brought to you by <em>gregdferrell</em>
+				<span>Murphy's Map is brought to you by <em>gregdferrell</em></span>
 				<a href="https://www.github.com/gregdferrell" target="_blank" class="header-icon-link"><span
 						class="fa fa-github fa-lg text-white" aria-hidden="true"></span></a>
 				<a href="https://www.linkedin.com/in/gregdferrell" target="_blank" class="header-icon-link"><span
 						class="fa fa-linkedin fa-lg text-white" aria-hidden="true"></span></a>
 			</section>
 
-			<aside class="sidebar">
-				<div class="filter-by">
-					<h4>Filters:</h4>
-					<select id="place-type" multiple="multiple" data-bind="options: allLocationTypes, optionsText: 'description', selectedOptions: selectedLocationTypes, attr: {'size': allLocationTypes().length}, event: {change: filtersUpdate}"></select>
-				</div>
-				<hr>
-				<div class="place-list" data-bind="foreach: locationList">
-					<p class="place-item" data-bind="visible: visible, text: title, css: {'place-item-active': selected}, click: $parent.setCurrentLocation"></p>
-				</div>
-				<hr>
-			</aside>
+			<div class="filter-by">
+				<h4>Filters:</h4>
+				<select id="place-type" multiple="multiple" data-bind="options: allLocationTypes, optionsText: 'description', selectedOptions: selectedLocationTypes, attr: {'size': allLocationTypes().length}, event: {change: filtersUpdate}"></select>
+			</div>
+
+			<div class="place-list" data-bind="foreach: locationList">
+				<div class="place-item" data-bind="visible: visible, text: title, css: {'place-item-active': selected}, click: $parent.setCurrentLocation"></div>
+			</div>
 
 			<main class="main">
 				<div id="map">
