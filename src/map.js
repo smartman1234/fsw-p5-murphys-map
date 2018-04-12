@@ -46,13 +46,13 @@ export function initMap() {
 		marker.addListener('click', function () {
 			// Deactivate current marker and deselect current UI controls associated with it
 			if (currentMarker) {
-				deactivateMarker(currentMarker);
 				Locations.deselectLocation(Locations.locationsModel[currentMarker.id]);
+				deactivateMarker(currentMarker);
 			}
 
 			// Activate
 			activateMarker(this);
-			Locations.selectLocation(Locations.locationsModel[currentMarker.id]);
+			Locations.selectLocation(Locations.locationsModel[this.id]);
 		});
 		marker.setMap(map);
 	}
@@ -84,6 +84,8 @@ export function activateMarker(marker) {
 }
 
 export function deactivateMarker(marker) {
+	currentMarker = null;
 	marker.setAnimation(null);
 	infoWindow.marker = null;
+	infoWindow.close();
 }

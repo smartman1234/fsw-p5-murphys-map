@@ -57,11 +57,11 @@ let LocationsViewModel = function () {
 	// Functions
 	this.setCurrentLocation = function (locationSelected) {
 		if (currentLocation) {
-			// Deselect Knockout UI
-			deselectLocation(currentLocation);
-
 			// Deselect Map UI
 			Map.deactivateMarker(currentLocation.mapMarker);
+
+			// Deselect Knockout UI
+			deselectLocation(currentLocation);
 		}
 
 		// Select Knockout UI
@@ -74,8 +74,17 @@ let LocationsViewModel = function () {
 	this.filtersUpdate = function () {
 		self.locationList().forEach(function (location) {
 			if (location.visible()) {
-				location.mapMarker.setMap(Map.map);
+				if(!location.selected()) {
+					location.mapMarker.setMap(Map.map);
+				}
 			} else {
+				if (location.selected()) {
+					// Deselect Map UI
+					Map.deactivateMarker(currentLocation.mapMarker);
+
+					// Deselect Knockout UI
+					deselectLocation(currentLocation);
+				}
 				location.mapMarker.setMap(null);
 			}
 		});
@@ -84,6 +93,7 @@ let LocationsViewModel = function () {
 
 export function deselectLocation(location) {
 	location.selected(false);
+	currentLocation = null;
 }
 
 export function selectLocation(location) {
