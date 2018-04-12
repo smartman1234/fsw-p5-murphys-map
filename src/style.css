@@ -45,6 +45,10 @@ hr {
 	grid-area: header-right;
 }
 
+.infowindow {
+	color: black;
+}
+
 .main {
 	border-top: 1px solid white;
 	grid-area: main;
@@ -81,8 +85,14 @@ hr {
 }
 
 #place-type {
+	border: 3px solid white;
+	border-radius: 5px;
 	overflow-y: auto;
-	padding: 0.5rem;
+}
+
+#place-type option {
+	padding: 10px 20px 10px;
+	text-align: center;
 }
 
 .sidebar {

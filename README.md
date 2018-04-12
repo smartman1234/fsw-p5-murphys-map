@@ -17,6 +17,5 @@ A google maps app showcasing Murphy Group locations in PEI. Created to learn Kno
 - `npm run build` -> Create `bundle.js` production distribution
 
 ### TODO
-- Display markers on page load
-- Implement selection of list view entry or map marker; include popup and animation of marker
+- Filtering out a selected item should deselect that item
 - Integrate with foursquare API to get additional info for locations
