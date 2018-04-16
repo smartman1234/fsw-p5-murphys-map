@@ -9,13 +9,11 @@ A google maps app showcasing Murphy Group locations in PEI. Created to learn Kno
 
 ### Setup
 - `npm install` -> Download dependencies
+- Populate `constants.js` with your FourSquare API client id and secret
+- Populate `script` tag in `index.html` with your own Google Maps API key
 
 ### Running the App: Dev
 - `npm start` -> Run in dev mode
 
 ### Build Prod
 - `npm run build` -> Create `bundle.js` production distribution
-
-### TODO
-- Filtering out a selected item should deselect that item
-- Integrate with foursquare API to get additional info for locations
