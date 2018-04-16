@@ -2,6 +2,8 @@
 
 import * as Locations from './locations';
 import * as Data from './locationsData';
+import * as FourSquare from './foursquareService'
+import * as Axios from 'axios'
 
 // Google Map
 export let map;
@@ -62,6 +64,48 @@ export function initMap() {
 }
 
 export function activateMarker(marker) {
+	// Get FourSquare content before doing anything else
+	const foursquareId = Locations.locationsModel[marker.id].foursquareId();
+
+	Axios.all([FourSquare.getFoursquareVenueDetails(foursquareId), FourSquare.getFoursquareVenueTips(foursquareId)])
+		.then(Axios.spread(function (responseDetails, responseTips) {
+			// Both requests are now complete
+
+			// Get details
+			const phone = responseDetails.data.response.venue.contact.formattedPhone ? responseDetails.data.response.venue.contact.formattedPhone : '';
+			const imgUrlPrefix = responseDetails.data.response.venue.bestPhoto.prefix;
+			const imgUrlSize = '300x300';
+			const imgUrlSuffix = responseDetails.data.response.venue.bestPhoto.suffix;
+			const imgUrl = imgUrlPrefix + imgUrlSize + imgUrlSuffix;
+			const numLikes = responseDetails.data.response.venue.likes.count;
+			const category = responseDetails.data.response.venue.categories[0].name ? responseDetails.data.response.venue.categories[0].name : '';
+
+			// Get tips
+			const numTips = responseTips.data.response.tips.count;
+			const tips = responseTips.data.response.tips.items; // [0].text
+
+			// Create content string
+			let innerContent = `<p>${category} (${numLikes} likes)</p>` +
+				`<p>${phone}</p>` +
+				`<img class="infowindow-img" src="${imgUrl}">`;
+
+			if (numTips > 0) {
+				innerContent += '<div><h3>Recent Comments:</h3><ul class="tips-list">';
+				for (let i=0; i<Math.min(numTips, 5); i++) {
+					innerContent += `<li>${tips[i].text}</li>`;
+				}
+				innerContent += '</ul></div>';
+			}
+
+			populateInfoWindow(marker, innerContent);
+		}))
+		.catch(function(error) {
+			const innerContent = '<p class="text-red">Error retrieving venue details from FourSquare.</p>';
+			populateInfoWindow(marker, innerContent);
+		});
+}
+
+function populateInfoWindow(marker, innerContent) {
 	// Set current marker
 	currentMarker = marker;
 
@@ -76,9 +120,13 @@ export function activateMarker(marker) {
 			Locations.deselectLocation(Locations.locationsModel[marker.id]);
 		});
 
-		// TODO what to put in the infowindow?
-		infoWindow.setContent('<div class="infowindow"><h3>' + marker.title + '</h3><div>Infowindow details go here!</div></div>');
+		const fullContent = `<div class="infowindow">` +
+			`  <h1>${marker.title}</h1>` +
+			`  <div>${innerContent}` +
+			`  </div>` +
+			`</div>`;
 
+		infoWindow.setContent(fullContent);
 		infoWindow.open(map, marker);
 	}
 }

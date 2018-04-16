@@ -53,6 +53,13 @@ hr {
 
 .infowindow {
 	color: black;
+	max-width: 350px;
+	text-align: center;
+}
+
+.infowindow-img {
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 .main {
@@ -101,6 +108,15 @@ hr {
 #place-type option {
 	padding: 10px 20px 10px;
 	text-align: center;
+}
+
+.text-red {
+	color: red;
+}
+
+.tips-list {
+	margin-right: 15px;
+	text-align: left;
 }
 
 /*                 */
