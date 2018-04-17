@@ -146,6 +146,7 @@ hr {
 		border: 0;
 		display: none;
 		grid-area: unset;
+		padding: 0.5rem 0 0.5rem;
 	}
 
 	.hamburger-control {
@@ -200,6 +201,11 @@ hr {
 		grid-area: unset;
 		height: 100%;
 		margin-top: 20px;
+	}
+
+	.place-item {
+		margin: 0.35rem 0.75rem 0.35rem;
+		padding: 0.35rem;
 	}
 
 	.place-list {
