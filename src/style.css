@@ -68,10 +68,12 @@ hr {
 }
 
 #map {
+	background-color: #CCC;
 	height: 100%;
 }
 
 .map-error {
+	font-weight: bold;
 	margin: 0;
 	padding: 1rem;
 }
