@@ -14,15 +14,15 @@
 
 	<body>
 		<section class="container">
-			<section class="header-left">
+			<div class="header-left">
 				<h1>Murphy's Map</h1>
-			</section>
+			</div>
 
-			<section class="header-right">
+			<div class="header-right">
 				<span>Murphy's Map is brought to you by <em>gregdferrell</em></span>
 				<a href="https://www.github.com/gregdferrell" target="_blank" class="header-icon-link"><span class="fa fa-github fa-lg" aria-hidden="true"></span></a>
 				<a href="https://www.linkedin.com/in/gregdferrell" target="_blank" class="header-icon-link"><span class="fa fa-linkedin fa-lg" aria-hidden="true"></span></a>
-			</section>
+			</div>
 
 			<div class="filter-by">
 				<h4>Filters:</h4>
@@ -33,14 +33,14 @@
 				<div class="place-item" data-bind="visible: visible, text: title, css: {'place-item-active': selected}, click: $parent.setCurrentLocation"></div>
 			</div>
 
-			<main class="main">
+			<div class="main">
 				<div id="map">
 					<p class="map-error text-red" data-bind="visible: !mapLoadSuccess(), text: 'Error loading the Google Map.'"></p>
 				</div>
-			</main>
+			</div>
 		</section>
 
+		<script defer src="https://maps.googleapis.com/maps/api/js?libraries=places,drawing,geometry&key=YOUR_API_KEY&v=3&callback=initMap" onerror="mapLoadingError()"></script>
 		<script src="bundle.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,drawing,geometry&key=AIzaSyAZvnlG6osECOWDzQPG98d1Du4JDWziYAg&v=3&callback=initMap" onerror="mapLoadingError()"></script>
 	</body>
 </html>
