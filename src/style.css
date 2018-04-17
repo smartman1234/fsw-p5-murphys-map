@@ -26,13 +26,23 @@ hr {
 	border: none;
 }
 
+.container {
+	height: 100%;
+}
+
 .filter-by {
 	border-top: 1px solid white;
+	display: block;
 	grid-area: filters;
 	margin: 0;
 	padding: 1rem 0 1rem;
 	text-align: center;
 }
+
+.hamburger-control {
+	display: none;
+}
+
 
 .header-icon-link {
 	color: white;
@@ -102,6 +112,7 @@ hr {
 
 .place-list {
 	border-top: 1px solid white;
+	display: block;
 	grid-area: places;
 	text-align: center;
 }
@@ -131,20 +142,70 @@ hr {
 /*                 */
 
 @media screen and (max-width: 575px) {
-	.container {
-		display: grid;
-		grid-template-columns: auto;
-		grid-template-rows: 50px 50px 250px auto;
-		grid-template-areas:
-				"header-left"
-				"header-right"
-				"filters"
-				"main";
+	.filter-by {
+		border: 0;
+		display: none;
+		grid-area: unset;
+	}
+
+	.hamburger-control {
+		display: block;
+		text-align: center;
+	}
+
+	.hamburger-open {
+		background: none;
+		border: 0;
+		color: #FFF;
+		cursor: pointer;
+		font-size: 1.4em;
+		font-weight: bold;
+		line-height: 45px;
+		outline: none;
+		padding: 5px 15px 0 15px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 10000000000000;
+	}
+
+	.hamburger-close {
+		background: none;
+		border: 0;
+		color: #FFF;
+		cursor: pointer;
+		display: none;
+		font-size: 3em;
+		font-weight: bold;
+		line-height: 65px;
+		outline: none;
+		padding: 7px 15px 0 15px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 10000000000000;
+	}
+
+	.header-left {
+		grid-area: unset;
+		padding-left: 10px;
+	}
+
+	.header-right {
+		grid-area: unset;
+		padding-left: 10px;
+	}
+
+	.main {
+		grid-area: unset;
 		height: 100%;
+		margin-top: 20px;
 	}
 
 	.place-list {
+		border: 0;
 		display: none;
+		grid-area: unset;
 	}
 }
 
@@ -161,11 +222,18 @@ hr {
 				"header-left header-right"
 				"filters main"
 				"places main";
-		height: 100%;
+	}
+
+	.filter-by {
+		display: block !important;
 	}
 
 	#map {
 		border-left: 1px solid white;
+	}
+
+	.place-list {
+		display: block !important;
 	}
 }
 
@@ -182,10 +250,17 @@ hr {
 				"header-left header-right"
 				"filters main"
 				"places main";
-		height: 100%;
+	}
+
+	.filter-by {
+		display: block !important;
 	}
 
 	#map {
 		border-left: 1px solid white;
+	}
+
+	.place-list {
+		display: block !important;
 	}
 }
