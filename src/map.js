@@ -27,6 +27,7 @@ export function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 46.23789, lng: -63.1324108},
 		zoom: 15,
+		gestureHandling: 'greedy',
 		mapTypeControlOptions: {
 			mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
 		}
