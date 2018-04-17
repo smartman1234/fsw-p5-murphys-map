@@ -17,6 +17,11 @@ export let infoWindow;
 // Track currently selected marker
 let currentMarker;
 
+export function mapLoadingError() {
+	console.log('ERROR loading Google Map');
+	Locations.applyBindings(false);
+}
+
 export function initMap() {
 	// Create a new map
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -60,7 +65,7 @@ export function initMap() {
 	}
 
 	// Setup Knockout bindings only after map is loaded
-	Locations.applyBindings();
+	Locations.applyBindings(true);
 }
 
 export function activateMarker(marker) {

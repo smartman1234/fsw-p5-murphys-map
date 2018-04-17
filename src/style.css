@@ -71,6 +71,11 @@ hr {
 	height: 100%;
 }
 
+.map-error {
+	margin: 0;
+	padding: 1rem;
+}
+
 .place-item {
 	border-radius: 5px;
 	cursor: pointer;
@@ -156,6 +161,10 @@ hr {
 				"places main";
 		height: 100%;
 	}
+
+	#map {
+		border-left: 1px solid white;
+	}
 }
 
 /*                 */
@@ -172,5 +181,9 @@ hr {
 				"filters main"
 				"places main";
 		height: 100%;
+	}
+
+	#map {
+		border-left: 1px solid white;
 	}
 }

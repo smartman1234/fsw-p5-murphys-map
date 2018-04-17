@@ -7,5 +7,6 @@ import * as Map from './map';
 import './style.css';
 import '../index.html'
 
-// Set our GoogleMaps API callback function to initMap()
+// Set our GoogleMaps API callback functions
 window.initMap = Map.initMap;
+window.mapLoadingError = Map.mapLoadingError;

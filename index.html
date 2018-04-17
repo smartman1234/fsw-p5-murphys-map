@@ -35,11 +35,12 @@
 
 			<main class="main">
 				<div id="map">
+					<p class="map-error text-red" data-bind="visible: !mapLoadSuccess(), text: 'Error loading the Google Map.'"></p>
 				</div>
 			</main>
 		</section>
 
 		<script src="bundle.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,drawing,geometry&key=AIzaSyAZvnlG6osECOWDzQPG98d1Du4JDWziYAg&v=3&callback=initMap"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,drawing,geometry&key=AIzaSyAZvnlG6osECOWDzQPG98d1Du4JDWziYAg&v=3&callback=initMap" onerror="mapLoadingError()"></script>
 	</body>
 </html>

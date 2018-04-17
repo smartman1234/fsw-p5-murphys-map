@@ -36,10 +36,11 @@ let Location = function (data, selectedLocationTypes) {
 
 // ViewModel ----------------------------------------------
 
-let LocationsViewModel = function () {
+let LocationsViewModel = function (mapLoadSuccess) {
 	let self = this;
 
 	// Observables
+	this.mapLoadSuccess = ko.observable(mapLoadSuccess);
 	this.allLocationTypes = ko.observableArray([]);
 	this.selectedLocationTypes = ko.observableArray([]);
 	Data.getLocationTypesData().forEach(function (locationType) {
@@ -101,6 +102,6 @@ export function selectLocation(location) {
 	currentLocation = location;
 }
 
-export function applyBindings() {
-	ko.applyBindings(new LocationsViewModel());
+export function applyBindings(mapLoadSuccess) {
+	ko.applyBindings(new LocationsViewModel(mapLoadSuccess));
 }
