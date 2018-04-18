@@ -40,15 +40,15 @@ let LocationsViewModel = function (mapLoadSuccess) {
 	let self = this;
 
 	// Observables
-	this.mapLoadSuccess = ko.observable(mapLoadSuccess);
-	this.allLocationTypes = ko.observableArray([]);
-	this.selectedLocationTypes = ko.observableArray([]);
+	self.mapLoadSuccess = ko.observable(mapLoadSuccess);
+	self.allLocationTypes = ko.observableArray([]);
+	self.selectedLocationTypes = ko.observableArray([]);
 	Data.getLocationTypesData().forEach(function (locationTypeData) {
 		self.allLocationTypes.push(locationTypeData);
 		self.selectedLocationTypes.push(locationTypeData);
 	});
 
-	this.locationList = ko.observableArray([]);
+	self.locationList = ko.observableArray([]);
 	Data.getLocationsData().forEach(function (locationData) {
 		const location = new Location(locationData, self.selectedLocationTypes);
 		self.locationList.push(location);
@@ -56,7 +56,7 @@ let LocationsViewModel = function (mapLoadSuccess) {
 	});
 
 	// Functions
-	this.setCurrentLocation = function (locationSelected) {
+	self.setCurrentLocation = function (locationSelected) {
 		if (currentLocation) {
 			// Deselect Map UI
 			Map.deactivateMarker(currentLocation.mapMarker);
@@ -72,11 +72,11 @@ let LocationsViewModel = function (mapLoadSuccess) {
 		Map.activateMarker(locationSelected.mapMarker);
 	};
 
-	this.filtersUpdate = function () {
+	self.filtersUpdate = function () {
 		self.locationList().forEach(function (location) {
 			if (location.visible()) {
 				if(!location.selected()) {
-					location.mapMarker.setMap(Map.map);
+					location.mapMarker.setVisible(true);
 				}
 			} else {
 				if (location.selected()) {
@@ -86,7 +86,7 @@ let LocationsViewModel = function (mapLoadSuccess) {
 					// Deselect Knockout UI
 					deselectLocation(currentLocation);
 				}
-				location.mapMarker.setMap(null);
+				location.mapMarker.setVisible(false);
 			}
 		});
 	};
