@@ -2,8 +2,9 @@
 
 import * as Locations from './locations';
 import * as Data from './locationsData';
-import * as FourSquare from './foursquareService'
-import * as Axios from 'axios'
+import * as FourSquare from './foursquareService';
+import * as Constants from './constants';
+import * as Axios from 'axios';
 
 // Google Map
 export let map;
@@ -18,14 +19,13 @@ export let infoWindow;
 let currentMarker;
 
 export function mapLoadingError() {
-	console.log('ERROR loading Google Map');
 	Locations.applyBindings(false);
 }
 
 export function initMap() {
 	// Create a new map
 	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 46.23789, lng: -63.1324108},
+		center: Constants.map_center,
 		zoom: 15,
 		gestureHandling: 'auto',
 		mapTypeControlOptions: {
@@ -38,7 +38,8 @@ export function initMap() {
 	let locations = Data.getLocationsData();
 
 	// Iterate through our list of locations and create markers for each
-	for (let i = 0; i < locations.length; i++) {
+	const numLocations = locations.length;
+	for (let i = 0; i < numLocations; i++) {
 		let position = locations[i].location;
 		let title = locations[i].title;
 		let id = locations[i].id;
@@ -78,7 +79,7 @@ export function activateMarker(marker) {
 			// Both requests are now complete
 
 			// Get details
-			const phone = responseDetails.data.response.venue.contact.formattedPhone ? responseDetails.data.response.venue.contact.formattedPhone : '';
+			const phone = responseDetails.data.response.venue.contact.formattedPhone || '';
 			const imgUrlPrefix = responseDetails.data.response.venue.bestPhoto.prefix;
 			const imgUrlSize = '300x300';
 			const imgUrlSuffix = responseDetails.data.response.venue.bestPhoto.suffix;
@@ -105,7 +106,7 @@ export function activateMarker(marker) {
 
 			populateInfoWindow(marker, innerContent);
 		}))
-		.catch(function(error) {
+		.catch(function() {
 			const innerContent = '<p class="text-red">Error retrieving venue details from FourSquare.</p>';
 			populateInfoWindow(marker, innerContent);
 		});
@@ -126,11 +127,11 @@ function populateInfoWindow(marker, innerContent) {
 			Locations.deselectLocation(Locations.locationsModel[marker.id]);
 		});
 
-		const fullContent = `<div class="infowindow">` +
+		const fullContent = '<div class="infowindow">' +
 			`  <h1>${marker.title}</h1>` +
 			`  <div>${innerContent}` +
-			`  </div>` +
-			`</div>`;
+			'  </div>' +
+			'</div>';
 
 		infoWindow.setContent(fullContent);
 		infoWindow.open(map, marker);

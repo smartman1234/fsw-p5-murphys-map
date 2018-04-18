@@ -43,16 +43,16 @@ let LocationsViewModel = function (mapLoadSuccess) {
 	this.mapLoadSuccess = ko.observable(mapLoadSuccess);
 	this.allLocationTypes = ko.observableArray([]);
 	this.selectedLocationTypes = ko.observableArray([]);
-	Data.getLocationTypesData().forEach(function (locationType) {
-		self.allLocationTypes.push(locationType);
-		self.selectedLocationTypes.push(locationType);
+	Data.getLocationTypesData().forEach(function (locationTypeData) {
+		self.allLocationTypes.push(locationTypeData);
+		self.selectedLocationTypes.push(locationTypeData);
 	});
 
 	this.locationList = ko.observableArray([]);
-	Data.getLocationsData().forEach(function (location) {
-		const loc = new Location(location, self.selectedLocationTypes);
-		self.locationList.push(loc);
-		locationsModel[location.id] = loc;
+	Data.getLocationsData().forEach(function (locationData) {
+		const location = new Location(locationData, self.selectedLocationTypes);
+		self.locationList.push(location);
+		locationsModel[location.id()] = location;
 	});
 
 	// Functions
