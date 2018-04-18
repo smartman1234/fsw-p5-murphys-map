@@ -44,8 +44,9 @@ let LocationsViewModel = function (mapLoadSuccess) {
 	self.allLocationTypes = ko.observableArray([]);
 	self.selectedLocationTypes = ko.observableArray([]);
 	Data.getLocationTypesData().forEach(function (locationTypeData) {
-		self.allLocationTypes.push(locationTypeData);
-		self.selectedLocationTypes.push(locationTypeData);
+		const locationType = new LocationType(locationTypeData);
+		self.allLocationTypes.push(locationType);
+		self.selectedLocationTypes.push(locationType);
 	});
 
 	self.locationList = ko.observableArray([]);
