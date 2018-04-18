@@ -12,6 +12,9 @@ A google maps app showcasing Murphy Group locations in PEI. Created to learn Kno
 - Populate `constants.js` with your FourSquare API client id and secret
 - Populate `script` tag in `index.html` with your own Google Maps API key
 
+### Run ESLint to validate JavaScript Code Style
+- `./node_modules/.bin/eslint src`
+
 ### Running the App: Dev
 - `npm start` -> Run in dev mode
 
