@@ -72,7 +72,7 @@ export function initMap() {
 
 export function activateMarker(marker) {
 	// Get FourSquare content before doing anything else
-	const foursquareId = Locations.locationsModel[marker.id].foursquareId();
+	const foursquareId = Locations.locationsModel[marker.id].foursquareId;
 
 	Axios.all([FourSquare.getFoursquareVenueDetails(foursquareId), FourSquare.getFoursquareVenueTips(foursquareId)])
 		.then(Axios.spread(function (responseDetails, responseTips) {

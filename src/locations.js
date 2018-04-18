@@ -12,21 +12,21 @@ let currentLocation;
 
 // Model Objects ------------------------------------------
 
-let LocationType = function (data) {
-	this.id = ko.observable(data.id);
-	this.description = ko.observable(data.description);
+const LocationType = function (data) {
+	this.id = data.id;
+	this.description = data.description;
 };
 
-let Location = function (data, selectedLocationTypes) {
-	this.id = ko.observable(data.id);
-	this.title = ko.observable(data.title);
-	this.location = ko.observable(data.location);
-	this.foursquareId = ko.observable(data.foursquareId);
-	this.typeId = ko.observable(data.typeId);
+const Location = function (data, selectedLocationTypes) {
+	this.id = data.id;
+	this.title = data.title;
+	this.location = data.location;
+	this.foursquareId = data.foursquareId;
+	this.typeId = data.typeId;
 
 	this.visible = ko.computed(function () {
 		let selectedLocationTypeIds = selectedLocationTypes().map(obj => obj.id);
-		return !(selectedLocationTypeIds.indexOf(this.typeId()) === -1);
+		return !(selectedLocationTypeIds.indexOf(this.typeId) === -1);
 	}, this);
 
 	this.selected = ko.observable(false);
@@ -52,7 +52,7 @@ let LocationsViewModel = function (mapLoadSuccess) {
 	Data.getLocationsData().forEach(function (locationData) {
 		const location = new Location(locationData, self.selectedLocationTypes);
 		self.locationList.push(location);
-		locationsModel[location.id()] = location;
+		locationsModel[location.id] = location;
 	});
 
 	// Functions
