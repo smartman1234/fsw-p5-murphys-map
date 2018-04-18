@@ -14,7 +14,7 @@ A google maps app showcasing Murphy Group locations in PEI. Created to learn Kno
 
 *The app is fully responsive, viewable on tablet and mobile devices.*
 
-![Murphy's Map - Responsive](demo/murphys-map-responsive.png "Murphy's Map - Responsive")
+![Murphy's Map - Responsive](demo/murphys-map-responsive-mobile.png "Murphy's Map - Responsive")
 
 ## Getting Started With Development
 - This project is built and tested with:
