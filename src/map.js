@@ -88,17 +88,17 @@ export function activateMarker(marker) {
 			const category = responseDetails.data.response.venue.categories[0].name ? responseDetails.data.response.venue.categories[0].name : '';
 
 			// Get tips
-			const numTips = responseTips.data.response.tips.count;
-			const tips = responseTips.data.response.tips.items; // [0].text
+			// TODO: For some reason, not all tips always being returned
+			const tips = responseTips.data.response.tips.items;
 
 			// Create content string
 			let innerContent = `<p>${category} (${numLikes} likes)</p>` +
 				`<p>${phone}</p>` +
 				`<img class="infowindow-img" src="${imgUrl}">`;
 
-			if (numTips > 0) {
+			if (tips.length > 0) {
 				innerContent += '<div><h3>Recent Comments:</h3><ul class="tips-list">';
-				for (let i=0; i<Math.min(numTips, 5); i++) {
+				for (let i=0; i<Math.min(tips.length, 5); i++) {
 					innerContent += `<li>${tips[i].text}</li>`;
 				}
 				innerContent += '</ul></div>';
