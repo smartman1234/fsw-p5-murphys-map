@@ -1,6 +1,6 @@
 # fsw-p5-neighborhood-map
 
-A google maps app showcasing Murphy Group locations in PEI. Created to learn Knockout.js, Google Maps API, CSS Grid, Node and front-end package management, it's the 5th project in the Udacity Full Stack Nanodegree.
+A google maps app showcasing Murphy Group locations in PEI. Created to learn Knockout.js, Google Maps API, CSS Grid, Node and front-end package management, it's the 5th project in the Udacity Nanodegree: Full Stack Web Developer.
 
 ## Demo
 
